@@ -10,7 +10,7 @@ submitButton.addEventListener('click', async function() {
   const userInput = userName.value;
   const emailInput = emailName.value;
 
-  if (!isValidInput(userInput) || !isValidInput(emailInput)) {
+  if (userInput == "" || emailInput == "") {
     alert("Invalid input!");
     return;
   }
@@ -60,9 +60,4 @@ async function showLoadingModal(modalText) {
   await new Promise(resolve => setTimeout(resolve, delay));
 
   loadingModal.remove();
-}
-
-function isValidInput(input) {
-  const regex = /^-?\d+(\.\d+)?$/;
-  return regex.test(input);
 }
