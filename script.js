@@ -1,28 +1,34 @@
-let userName = document.getElementById('name');
-let emailName = document.getElementById('email');
-let submitButton = document.getElementById('submitButton');
+let userNumberInput = document.getElementById('userNumber');
+let guessButton = document.getElementById('guessButton');
 let loadingContainer = document.getElementById('loading-container');
-let virusText = document.getElementById('virusText');
 
 const wait = (n) => new Promise((resolve) => setTimeout(resolve, n));
 
-submitButton.addEventListener('click', async function() {
-  const userInput = userName.value;
-  const emailInput = emailName.value;
+guessButton.addEventListener('click', async function() {
+  const userInput = userNumberInput.value;
 
-  if (userInput == "" || emailInput == "") {
-    alert("Invalid input!");
-    return;
-  }
+  const userNumber = parseFloat(userInput);
 
-  userName.disabled = true;
-  submitButton.disabled = true;
+  userNumberInput.disabled = true;
+  guessButton.disabled = true;
   loadingContainer.style.display = 'flex';
 
   const loadingModals = [
-    "Scanning device",
-    "Downloading malware",
-    "Installing virus"
+    "Validating input parameters",
+    "Initializing user data",
+    "Gathering nodes",
+    "Calculating socket runtime",
+    "Generating binary hashmap",
+    "Encrypting data",
+    "Computing server side authorization",
+    "Installing dependencies",
+    "Analyzing libraries",
+    "Rebooting system operations",
+    "Upgrading program files",
+    "Verifying network",
+    "Checking DNS permissions",
+    "Handling events",
+    "Finalizing output"
   ];
 
   for (const modal of loadingModals) {
@@ -31,10 +37,11 @@ submitButton.addEventListener('click', async function() {
 
   loadingContainer.style.display = 'none';
 
-  virusText.innerHTML = "Installation complete."
+  const guessText = document.getElementById("guessText");
+  guessText.innerHTML = "Haha there is no extra credit!";
 
-  userName.disabled = false;
-  submitButton.disabled = false;
+  userNumberInput.disabled = false;
+  guessButton.disabled = false;
 });
 
 async function showLoadingModal(modalText) {
@@ -51,13 +58,15 @@ async function showLoadingModal(modalText) {
 
   loadingContainer.appendChild(loadingModal);
 
-  const maxDelay = 1500;
-  const minDelay = 1000;
+  const maxDelay = 5000;
+  const minDelay = 2000;
   const delay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
 
   loadingBar.style.animationDuration = `${delay}ms`;
 
   await new Promise(resolve => setTimeout(resolve, delay));
+
+  await wait(1000 * Math.floor(Math.random() * (1 - 0.5 + 1)) + 0.5);
 
   loadingModal.remove();
 }
